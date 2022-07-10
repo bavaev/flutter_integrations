@@ -41,51 +41,55 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'Events from platform:',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-          ),
-          StreamBuilder(
-            stream: _service.getStream(),
-            builder: (context, snapshot) => Text(
-              '${snapshot.hasData ? snapshot.data : ''}',
-              style: const TextStyle(fontSize: 30),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 100,
             ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          const Text(
-            'Method channel from platform',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-          ),
-          Text(
-            _text,
-            style: const TextStyle(fontSize: 30),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Center(
-            child: SizedBox(
-              height: 200,
-              child: PlatformWidget(),
+            const Text(
+              'Events from platform:',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
-          ),
-          ElevatedButton(
-            onPressed: _getValue,
-            child: const Padding(
-              padding: EdgeInsets.all(20),
-              child: Text(
-                'Flutter Button',
-                style: TextStyle(fontSize: 30),
+            StreamBuilder(
+              stream: _service.getStream(),
+              builder: (context, snapshot) => Text(
+                '${snapshot.hasData ? snapshot.data : ''}',
+                style: const TextStyle(fontSize: 30),
               ),
             ),
-          ),
-        ],
+            const SizedBox(
+              height: 30,
+            ),
+            const Text(
+              'Method channel from platform',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              _text,
+              style: const TextStyle(fontSize: 30),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Center(
+              child: SizedBox(
+                height: 200,
+                child: PlatformWidget(),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: _getValue,
+              child: const Padding(
+                padding: EdgeInsets.all(20),
+                child: Text(
+                  'Flutter Button',
+                  style: TextStyle(fontSize: 30),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
