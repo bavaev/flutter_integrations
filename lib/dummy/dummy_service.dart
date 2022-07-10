@@ -1,0 +1,6 @@
+class PlatformServiceImpl {
+  getStream() {}
+
+  getValue() {}
+
+}
